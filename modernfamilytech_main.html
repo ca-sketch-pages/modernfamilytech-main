@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Family Tech - Trusted Product Reviews & Recommendations</title>
+    <meta name="description" content="Expert product reviews and recommendations for modern families. Find the best tech solutions for your home and family life.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44,62,80,0.8), rgba(52,152,219,0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="%23ffffff" stroke-width="1" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            color: white;
+            text-align: center;
+            padding: 150px 0 100px;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231,76,60,0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231,76,60,0.4);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3498db;
+            display: block;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 400px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Categories Section */
+        .categories-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+            color: #666;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .category-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .category-content {
+            padding: 25px;
+        }
+
+        .category-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .category-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .category-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .category-link:hover {
+            color: #2980b9;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+        }
+
+        /* Newsletter */
+        .newsletter-section {
+            padding: 80px 0;
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 30px auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .newsletter-button {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .newsletter-button:hover {
+            background: #c0392b;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a252f;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 20px;
+            text-align: center;
+            color: #bdc3c7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                justify-content: center;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="#" class="logo">Modern Family Tech</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Trusted Tech Reviews for Modern Families</h1>
+            <p class="hero-subtitle">Expert product reviews and recommendations to help your family make smart technology decisions with confidence.</p>
+            <a href="#categories" class="cta-button">Explore Reviews</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Who We Are</h2>
+                    <p>At Modern Family Tech, our mission is to provide reliable product insights backed by thorough research, helping families make smart technology choices with confidence and integrity.</p>
+                    <p>We understand that modern families need technology that actually works for their lifestyle - from preserving precious memories to staying connected and productive.</p>
+                    
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Products Reviewed</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">50K+</span>
+                            <span class="stat-label">Families Helped</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <p>Expert Research & Testing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section" id="categories">
+        <div class="container">
+            <h2 class="section-title">Our Expert Product Categories</h2>
+            <p class="section-subtitle">Explore our comprehensive reviews and comparisons designed to elevate your family's tech experience</p>
+            
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-image">📸</div>
+                    <div class="category-content">
+                        <h3>Memory Preservation</h3>
+                        <p>Professional digitization services, photo scanning, and family memory preservation solutions.</p>
+                        <a href="https://imemories.modernfamilytech.com" class="category-link">View Reviews →</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">☁️</div>
+                    <div class="category-content">
+                        <h3>Cloud Storage</h3>
+                        <p>Secure family photo storage, backup solutions, and cloud services for modern families.</p>
+                        <a href="#" class="category-link">Coming Soon →</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">🏠</div>
+                    <div class="category-content">
+                        <h3>Smart Home</h3>
+                        <p>Home automation, security systems, and smart devices that actually work for families.</p>
+                        <a href="#" class="category-link">Coming Soon →</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">📱</div>
+                    <div class="category-content">
+                        <h3>Family Apps</h3>
+                        <p>Educational apps, parental controls, and family-friendly technology solutions.</p>
+                        <a href="#" class="category-link">Coming Soon →</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">💻</div>
+                    <div class="category-content">
+                        <h3>Home Office</h3>
+                        <p>Work-from-home tech, productivity tools, and family-friendly office solutions.</p>
+                        <a href="#" class="category-link">Coming Soon →</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">🎮</div>
+                    <div class="category-content">
+                        <h3>Family Gaming</h3>
+                        <p>Age-appropriate games, educational technology, and family entertainment systems.</p>
+                        <a href="#" class="category-link">Coming Soon →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">What Families Say</h2>
+            <p class="section-subtitle">Real feedback from families we've helped</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"Modern Family Tech saved us thousands! Their honest reviews helped us choose the perfect memory preservation service for our family photos."</p>
+                    <p class="testimonial-author">- Sarah M., Mother of 3</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"Finally, tech reviews that understand real family needs. No more buying gadgets that collect dust!"</p>
+                    <p class="testimonial-author">- Mike Johnson, Dad & Tech Enthusiast</p>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"The detailed comparisons and honest pros/cons helped us make confident decisions for our home office setup."</p>
+                    <p class="testimonial-author">- Lisa Chen, Working Mom</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Get the latest product reviews and family tech insights delivered to your inbox</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                <button type="submit" class="newsletter-button">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#categories">Product Categories</a>
+                    <a href="#about">About Us</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Product Reviews</h3>
+                    <a href="https://imemories.modernfamilytech.com">Memory Preservation</a>
+                    <a href="#">Cloud Storage</a>
+                    <a href="#">Smart Home</a>
+                    <a href="#">Family Apps</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <a href="/privacy-policy">Privacy Policy</a>
+                    <a href="/terms-of-service">Terms of Service</a>
+                    <a href="/affiliate-disclosure">Affiliate Disclosure</a>
+                    <a href="/contact">Contact Us</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <a href="#">Facebook</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Modern Family Tech. All rights reserved. | We may earn a commission from affiliate links.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Newsletter form handling
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('.newsletter-input').value;
+            alert('Thank you for subscribing! We\'ll send you our latest reviews and insights.');
+            this.reset();
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.category-card, .testimonial').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
